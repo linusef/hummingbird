@@ -8,7 +8,7 @@ module ProjectsHelper
 		formatter = Gherkin::Formatter::JSONFormatter.new(io)
 		parser = Gherkin::Parser::Parser.new(formatter)
 		Rails.root.join
-		sources = ["scripts_repo/google/features/tip1_declaritive_style_0.feature"]
+		sources = ["scripts_repo/sample_project/features/tip1_declaritive_style_0.feature"]
 		sources.each do |s|
 		  #path = File.expand_path(File.dirname(__FILE__) + s)
 		  path = Rails.root.join(s)

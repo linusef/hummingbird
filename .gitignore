@@ -21,4 +21,4 @@ doc/
 
 # Ignore scripts_repo for now
 /scripts_repo
-!/scripts_report/sample_project
+!/scripts_report/sample_project/*

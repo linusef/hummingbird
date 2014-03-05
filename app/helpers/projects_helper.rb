@@ -3,33 +3,43 @@ require 'stringio'
 require 'multi_json'
 
 module ProjectsHelper
+
+	def get_project_feature_files
+		path = Rails.root.join("scripts_repo/sample_project/features/*.feature")
+		Dir.glob(path)
+	end
+
 	def parse_features
 		io = StringIO.new
 		formatter = Gherkin::Formatter::JSONFormatter.new(io)
 		parser = Gherkin::Parser::Parser.new(formatter)
-		Rails.root.join
-		sources = ["scripts_repo/sample_project/features/tip1_declaritive_style_0.feature"]
-		sources.each do |s|
-		  #path = File.expand_path(File.dirname(__FILE__) + s)
-		  path = Rails.root.join(s)
-		  parser.parse(IO.read(path), path, 0)
+
+		sources = get_project_feature_files
+		sources.each do |file_path|
+		  parser.parse(IO.read(file_path), file_path, 0)
 		end
 
 		formatter.done
+		# data is used to store one feature's html
 		data = ''
-		features_to_html(MultiJson.load(io.string), data)
+		one_feature_html(MultiJson.load(io.string), data)
 		data.html_safe
 	end
-	def features_to_html(o, data)
+
+	# return html source code for one feature file
+	def one_feature_html(o, data)
 		if o.class == Array
 			o.each do |m|
-				features_to_html(m, data)
+				one_feature_html(m, data)
 			end
+			data << '<br/>'
 		elsif o.class == Hash
 			o.keys.each do |k|
-				case k.to_s
+				case k
 				when "keyword"
-					if o[k] == "Feature" || o[k] == "Scenario"
+					if o[k] == "Feature" 
+						data << (content_tag :span, o[k], class: "key-word") << ": "
+					elsif o[k] == "Scenario"
 						data << (content_tag :span, o[k], class: "key-word") << ": "
 					elsif o[k] == "Given " || o[k] == "And " || o[k] == "Then " || "When "
 						data << (content_tag :span, o[k], class: "key-word")
@@ -38,11 +48,11 @@ module ProjectsHelper
 					end
 				when "name"
 					data << "#{o[k]}<br/>"
-				when "line", "id", "uri", "elements", "path", "description", "type", "steps"
+				when "line", "id", "uri", "elements", "path", "description", "type", "steps", "comments", "value"
 				else
 					data << k
 				end
-				features_to_html o[k], data
+				one_feature_html o[k], data
 			end
 		end	
 	end

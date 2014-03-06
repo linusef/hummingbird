@@ -1,3 +1,4 @@
+@tag1
 Feature: User login
   Scenario: successful login
     Given "qa-test" and "ABCDEFG" is a valid combination of username and password

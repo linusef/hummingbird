@@ -1,3 +1,4 @@
+@tag2
 Feature: Imperative style feature
   As an editor
   I want to create and edit an article

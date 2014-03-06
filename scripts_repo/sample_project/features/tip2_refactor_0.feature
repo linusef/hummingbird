@@ -1,3 +1,4 @@
+@tag2
 Feature: Data Table
 	Scenario: Cucumber Data Table
 	  Given the user "Jackie" with email "aslak@email.com" and phone "123" exists

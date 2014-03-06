@@ -1,0 +1,15 @@
+<% @steps = scenario["steps"] %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#<%= scenario["id"].sub(';','-') %>">
+        <span class="key-word">Scenario: </span><%= scenario["name"] %>
+      </a>
+    </h6>
+  </div>
+  <div id="<%= scenario["id"].sub(';','-') %>" class="panel-collapse collapse in">
+    <div class="panel-body">
+      <%= render partial: "step", collection: @steps %>
+    </div>
+  </div>
+</div>

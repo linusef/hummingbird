@@ -20,12 +20,13 @@ module ProjectsHelper
 		end
 
 		formatter.done
-		# data is used to store one feature's html
-		data = ''
-		one_feature_html(MultiJson.load(io.string), data)
-		data.html_safe
+		MultiJson.load(io.string)	
 	end
 
+	# data is used to store one feature's html
+	# data = ''
+	# one_feature_html(MultiJson.load(io.string), data)
+	# data.html_safe
 	# return html source code for one feature file
 	def one_feature_html(o, data)
 		if o.class == Array

@@ -1,4 +1,6 @@
 <%= render 'project_breadcrumb' %>
 <%= render 'project_nav_tabs' %>
-<% @features = parse_features %>
-<%= render partial: "feature", collection: @features %>
+<div class="panel-group" id="accordion">
+  <% @features = parse_features %>
+  <%= render partial: "feature", collection: @features %>
+</div>

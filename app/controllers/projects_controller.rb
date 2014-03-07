@@ -47,6 +47,9 @@ class ProjectsController < ApplicationController
   		end
   		cmd += " -d -f json" 
   		puts cmd
+  		result = `#{cmd}`
+  		project = Project.find(params[:project_id])
+  		new_report = project.reports.create(:title => Time.now.strftime("%b %d %I:%M:%S %p"), :content => result)
   		render :nothing => true
   	end
 

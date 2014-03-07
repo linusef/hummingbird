@@ -1,6 +1,8 @@
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#">Features</a></li>
-  <li><a href="#">Reports</a></li>
-  <li><a href="#">Files</a></li>
-  <li><a href="#">Settings</a></li>
-</ul>
+<div id="nav-tab">
+	<ul class="nav nav-tabs">
+	  <li><%= link_to "Features", @project %></li>
+	  <li><%= link_to "Reports", project_reports_path(@project) %></li>
+	  <li><a href="#">Files</a></li>
+	  <li><a href="#">Settings</a></li>
+	</ul>
+</div>

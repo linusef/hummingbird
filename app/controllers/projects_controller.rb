@@ -37,6 +37,11 @@ class ProjectsController < ApplicationController
     	redirect_to projects_path
   	end
 
+  	def start_test
+  		scenario_names = params[:scenario_names]
+  		render :nothing => true
+  	end
+
 	private
 
 	def project_params

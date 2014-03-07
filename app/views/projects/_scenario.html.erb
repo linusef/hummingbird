@@ -2,6 +2,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h6 class="panel-title">
+      <label><input type="checkbox" value="<%= scenario["name"] %>"/></label>
       <a data-toggle="collapse" data-parent="#accordion" href="#<%= scenario["id"].sub(';','-') %>">
         <span class="key-word">Scenario: </span><%= scenario["name"] %>
       </a>

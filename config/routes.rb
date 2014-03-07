@@ -1,4 +1,5 @@
 Hummingbird::Application.routes.draw do
+  post '/projects/start_test' => "projects#start_test"
   resources :projects
   root 'projects#index'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,5 +1,10 @@
 <%= render 'project_breadcrumb' %>
 <%= render 'project_nav_tabs' %>
+<div class="panel">
+  <button type="button" id="start_test" class="btn btn-primary pull-right">
+  Start
+  </button>
+</div>
 <div class="panel-group" id="accordion">
   <% @features = parse_features %>
   <%= render partial: "feature", collection: @features %>

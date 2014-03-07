@@ -14,6 +14,6 @@ $ ->
 			data:
 			  {scenario_names: scenario_names, project_id: project_id}
 			type: "post"
-
+		return
 
 

@@ -4,7 +4,7 @@
 $ ->
 	$(document).delegate "#start_test", 'click', ->
 		scenario_names = $("input:checkbox:checked").map(-> 
-			return $(this).prop('checked', this.checked).val()
+			$(this).prop('checked', this.checked).val()
 		).get()
 		console.log(scenario_names)
 

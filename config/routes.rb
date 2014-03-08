@@ -1,4 +1,7 @@
 Hummingbird::Application.routes.draw do
+  get "source_files/new"
+  get "source_files/create"
+  get "source_files/index"
   root 'projects#index'
   get "reports/index"
   post '/projects/start_test' => "projects#start_test"
@@ -6,6 +9,7 @@ Hummingbird::Application.routes.draw do
 
   resources :projects do 
     resources :reports
+    resources :source_files
   end
 
   resources :reports

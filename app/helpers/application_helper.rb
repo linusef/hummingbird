@@ -16,17 +16,17 @@ module ApplicationHelper
 	def nav_link(link_text, link_path)
 		case link_text
 		when "Features" 
-  		class_name = (controller_name == "projects" ? 'active	' : '')
-  	when "Reports"
-  		class_name = (controller_name == "reports" ? 'active' : '')
-  	when "Source Files"
-  		class_name = (controller_name == "source_files" ? 'active' : '')
-  	else
-  		class_name = ''
-  	end
+  			class_name = (controller_name == "projects" ? 'active	' : '')
+  		when "Reports"
+  			class_name = (controller_name == "reports" ? 'active' : '')
+  		when "Source Files"
+  			class_name = (controller_name == "source_files" ? 'active' : '')
+  		else
+  			class_name = ''
+  		end
 
-  	content_tag(:li, :class => class_name) do
-    	link_to link_text, link_path
-  	end
+  		content_tag(:li, :class => class_name) do
+    		link_to link_text, link_path
+  		end
 	end
 end

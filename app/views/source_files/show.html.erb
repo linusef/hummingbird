@@ -8,7 +8,9 @@
     editor.setReadOnly(true);  // false to make it editable
     document.getElementById('editor').style.fontSize='12px';
     editor.setTheme("ace/theme/solarized_light");
+    //editor.setTheme("ace/theme/github");
     editor.setTheme("ace/theme/monokai");
+    editor.setShowPrintMargin(false);
 
 	var bread_crumb_text = $('#source_file_panel').text();
 	var re = /(?:\.([^.]+))?$/;

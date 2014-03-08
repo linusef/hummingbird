@@ -12,4 +12,19 @@ module ApplicationHelper
 		formatter.done
 		MultiJson.load(io.string)
 	end
+
+	def nav_link(link_text, link_path)
+		case link_text
+		when "Features" 
+  		class_name = (controller_name == "projects" ? 'active	' : '')
+  	when "Reports"
+  		class_name = (controller_name == "reports" ? 'active' : '')
+  	else
+  		class_name = ''
+  	end
+
+  	content_tag(:li, :class => class_name) do
+    	link_to link_text, link_path
+  	end
+	end
 end

@@ -2,10 +2,13 @@ Hummingbird::Application.routes.draw do
   root 'projects#index'
   get "reports/index"
   post '/projects/start_test' => "projects#start_test"
+  get "reports/write_report"
 
   resources :projects do 
     resources :reports
   end
+
+  resources :reports
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

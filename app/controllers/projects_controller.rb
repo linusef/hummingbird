@@ -49,9 +49,14 @@ class ProjectsController < ApplicationController
   		puts cmd
   		result = `#{cmd}`
   		project = Project.find(params[:project_id])
-  		new_report = project.reports.create(:title => Time.now.strftime("%b %d %I:%M:%S %p"), :content => result)
+      title = "Scenarios: " + scenario_names.join("; ")
+  		new_report = project.reports.create(:title => title, :content => result)
   		render :nothing => true
   	end
+
+    def upload_report
+      
+    end
 
 	private
 

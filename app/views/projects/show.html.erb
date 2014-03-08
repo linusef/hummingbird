@@ -2,9 +2,7 @@
 <%= render 'project_nav_tabs' %>
 <div id="start" class="panel">
   <%= hidden_field_tag(:project_id, @project.id) %>
-  <button type="button" id="start_test" class="btn btn-primary pull-right">
-  Start
-  </button>
+  <%= link_to "Start", "#", {id: "start_test", class: "btn btn-primary pull-right"} %>
 </div>
 <div class="panel-group" id="accordion">
   <% @features = parse_features %>

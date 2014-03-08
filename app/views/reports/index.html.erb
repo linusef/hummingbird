@@ -1,4 +1,7 @@
+<div class="panel">
+<%= link_to "Create Report", new_project_report_path(@project), class: "btn btn-primary pull-right" %>
+</div>
 <% @reports.each do |r| %>
-<%= parse_report_json(r.content) %>
+	<%= link_to r.title, project_report_path(@project, r) %><br/>
 <% end %>
 

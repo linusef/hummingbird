@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-	$("#start").delegate "#start_test", 'click', ->
+	$("#start").on 'click', '#start_test',->
 		scenario_names = $("input:checkbox:checked").map(-> 
 			$(this).prop('checked', this.checked).val()
 		).get()
@@ -15,5 +15,3 @@ $ ->
 			  {scenario_names: scenario_names, project_id: project_id}
 			type: "post"
 		return
-
-

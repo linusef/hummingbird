@@ -1,10 +1,11 @@
 module SourceFilesHelper
 	def source_files_bread_crumb(node)
-    	link = node.file_name
+    	link = '<li>' + node.file_name + '</li>'
     	until node == node.root      
       		node = node.parent
       		link = "#{link_to node.file_name, node}" + " / " + link
     	end
+      link = '<ol class="breadcrumb">' + link + '</ol>'
     	link.html_safe 
   	end 
 

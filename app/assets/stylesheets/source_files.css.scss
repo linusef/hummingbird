@@ -4,5 +4,15 @@
 #editor {
    position: relative;
    overflow: scroll;
-   height: 450px;
+   height: 440px;
+}
+
+#source_file_panel {
+	.breadcrumb {
+		font-size: 1.2em;
+		font-weight: normal;
+		margin-top: 30px;
+		margin-bottom: 0px;
+		background: none !important;
+	}
 }

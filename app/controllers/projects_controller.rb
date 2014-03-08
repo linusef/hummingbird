@@ -39,7 +39,8 @@ class ProjectsController < ApplicationController
 
   	def start_test
   		scenario_names = params[:scenario_names]
-  		path = "/Users/Linus/astro/hummingbird/scripts_repo/sample_project"
+      path = Rails.root.to_s + "/scripts_repo/sample_project"
+  		# path = "/Users/Linus/astro/hummingbird/scripts_repo/sample_project"
   		cmd = "cucumber #{path}"
   		scenario_names.each do |s|
   			cmd += " -n "

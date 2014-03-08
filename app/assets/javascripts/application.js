@@ -15,4 +15,11 @@
 //= require jquery.turbolinks
 //= require bootstrap.min
 //= require ace
+//= require mode-gherkin
+//= require mode-java
+//= require mode-javascript
+//= require mode-ruby
+//= require mode-plain_text
+//= require theme-monokai
+//= require worker-javascript
 //= require_tree .

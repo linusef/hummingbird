@@ -3,5 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #editor {
    position: relative;
-   height: 400px;
+   overflow: scroll;
+   height: 450px;
 }

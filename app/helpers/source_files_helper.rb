@@ -10,8 +10,7 @@ module SourceFilesHelper
 
   def tree_table
     if @root.node_type == 'file'
-      # %{#{render 'form'}}.html_safe
-      "This is a file"
+       %{#{render 'form'}}.html_safe
     else
       table = %{<table class="table table-hover"><tbody>
         <tr><th></th><th>Name</th><th>Updated at</th></tr>}

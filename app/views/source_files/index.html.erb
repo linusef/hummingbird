@@ -1,4 +1,7 @@
-<%= source_files_bread_crumb(@root) %>
+<div class="panel">
+	<%= source_files_bread_crumb(@root) %>
+</div>
+
 <% @project.source_files.each do |f| %>
 <% end %>
 <%= tree_table %>

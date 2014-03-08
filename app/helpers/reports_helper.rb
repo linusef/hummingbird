@@ -23,7 +23,7 @@ module ReportsHelper
 				case k
 				when "keyword"
 					if o[k] == "Feature" 
-						data << '<tr><td>' << '<span class="key-word">Feature: </span>'
+						data << '<tr class="active"><td>' << '<span class="key-word">Feature: </span>'
 					elsif o[k] == "Scenario"
 						data << '<tr><td>' << '<span class="key-word">Scenario: </span>'
 					elsif o[k] == "Given " || o[k] == "And " || o[k] == "Then " || "When "

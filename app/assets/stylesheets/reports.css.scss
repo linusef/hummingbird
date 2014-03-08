@@ -1,3 +1,24 @@
 // Place all the styles related to the Reports controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#report_panel {
+	padding-top: 20px;
+	a {
+		margin-left: 10px;
+	}
+}
+#report_list {
+	margin-top: 60px;
+}
+
+#report_show {
+	margin-top: 40px;
+	table {
+		font-size: 13px;
+	}	
+}
+
+#report_show_panel {
+	padding-top: 15px;
+}

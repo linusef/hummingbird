@@ -1,1 +1,6 @@
-<%= parse_report_json(@report.content) %>
+<div id="report_show_panel">
+<%= link_to "Rerun Failed", "#", class: "btn btn-primary pull-right" %>
+</div>
+<div id="report_show">
+	<%= parse_report_json(@report.content) %>
+</div>

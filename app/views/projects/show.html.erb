@@ -1,8 +1,14 @@
 <%= render 'project_breadcrumb' %>
 <%= render 'project_nav_tabs' %>
-<div id="start" class="panel">
+<div id="start">
+<div class="btn-group">
+  <button type="button" class="btn btn-default">Firefox</button>
+  <button type="button" class="btn btn-default">Chrome</button>
+  <button type="button" class="btn btn-default disabled">IE</button>
+</div>
+
   <%= hidden_field_tag(:project_id, @project.id) %>
-  <%= link_to "Start", "#", {id: "start_test", class: "btn btn-primary pull-right"} %>
+  <%= link_to "Start Selected", "#", {id: "start_test", class: "btn btn-primary pull-right"} %>
 </div>
 <div class="panel-group" id="accordion">
   <% @features = parse_features %>

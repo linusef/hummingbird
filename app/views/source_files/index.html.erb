@@ -1,2 +1,4 @@
-<h1>SourceFiles#index</h1>
-<p>Find me in app/views/source_files/index.html.erb</p>
+<%= source_files_bread_crumb(@root) %>
+<% @project.source_files.each do |f| %>
+<% end %>
+<%= tree_table %>

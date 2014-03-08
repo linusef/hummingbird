@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140308035423) do
+ActiveRecord::Schema.define(version: 20140308073722) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(version: 20140308035423) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ancestry"
+    t.string   "node_type"
   end
+
+  add_index "source_files", ["ancestry"], name: "index_source_files_on_ancestry"
 
 end

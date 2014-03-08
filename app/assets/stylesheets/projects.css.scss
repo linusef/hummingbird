@@ -11,6 +11,17 @@
 }
 
 /* layout */ 
+.navbar {
+  padding-top: 4px;
+}
+
+.navbar li a {
+  color: #aaa;
+  &:hover {
+    color: #fff;
+    background-color: #333 !important;
+  };
+}
 
 /* breadcrumb */
 

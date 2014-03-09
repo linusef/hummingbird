@@ -11,9 +11,6 @@ class SourceFilesController < ApplicationController
       ActiveRecord::Base.transaction do
         @project.create_source_files_tree
       end
-      @root = @project.source_files[0].root
-    else
-  	  @root = @project.source_files[0].root
     end
   end 
 

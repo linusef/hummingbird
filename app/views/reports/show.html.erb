@@ -1,5 +1,12 @@
-<div id="report_show_panel">
-<%= link_to "Rerun Failed", "#", class: "btn btn-primary pull-right" %>
+<div class="row">
+	<div id="report_show_panel">
+		<span class="label alert-info">Scenario</span>
+		<span class="label alert-success">Passed</span>
+		<span class="label alert-warning">Undefined</span>
+		<span class="label alert-danger">Failed</span>
+		<span class="label alert-default">Skipped</span>
+		<%= link_to "Rerun Failed", "#", class: "btn btn-primary pull-right" %>
+	</div>
 </div>
 <div id="report_show">
 	<%= parse_report_json(@report.content) %>

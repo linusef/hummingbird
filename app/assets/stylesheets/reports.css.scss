@@ -13,7 +13,7 @@
 }
 
 #report_show {
-	margin-top: 40px;
+	margin-top: 20px;
 	table {
 		font-size: 13px;
 	}	
@@ -21,4 +21,12 @@
 
 #report_show_panel {
 	padding-top: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.alert-default {
+	background-color: #fcfcfc;
+	color: #222!important;
+	border: 1px solid #ccc!important;
 }

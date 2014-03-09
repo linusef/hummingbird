@@ -25,10 +25,16 @@ module ReportsHelper
 					if o[k] == "Feature" 
 						data << '<tr class="active"><td>' << '<span class="key-word">Feature: </span>'
 					elsif o[k] == "Scenario"
-						data << '<tr><td>' << '<span class="key-word">Scenario: </span>'
+						data << '<tr class="alert-info"><td>' << '<span class="key-word">Scenario: </span>'
 					elsif o[k] == "Given " || o[k] == "And " || o[k] == "Then " || "When "
 						if o["result"]["status"] == "undefined"
 							data << '<tr class="warning"><td>'
+						elsif o["result"]["status"] == "passed"
+							data << '<tr class="success"><td>'
+						elsif o["result"]["status"] == "failed"
+							data << '<tr class="danger"><td>'
+						elsif o["result"]["status"] == "skipped"
+							data << '<tr><td>'
 						else
 							data << '<tr><td>'
 						end
@@ -36,8 +42,13 @@ module ReportsHelper
 					end
 				when "tags"
 				when "name"
-					data <<  " #{o[k]}</td></tr>"
+					if o[k][0] != "@"
+						data <<  " " << o[k] << "</td></tr>"
+					end
 				when "result","steps", "status", "match","duration", "location" ,"line", "id", "uri", "elements", "path", "description", "type", "comments", "value"
+				when "arguments", "offset", "val"
+				when "error_message"
+						data << '<tr class="danger"><td>' << o[k] << "</td></tr>"
 				else
 					data << k
 				end

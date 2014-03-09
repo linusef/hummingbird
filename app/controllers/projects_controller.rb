@@ -38,10 +38,14 @@ class ProjectsController < ApplicationController
   	end
 
   	def start_test
+      @project = Project.find(params[:project_id])
   		scenario_names = params[:scenario_names]
-      path = Rails.root.to_s + "/scripts_repo/sample_project"
-  		# path = "/Users/Linus/astro/hummingbird/scripts_repo/sample_project"
+      # path = Rails.root.to_s + "/scripts_repo/sample_project"
+      project_repo_name = @project.name.downcase.sub(' ','_')
+      path = Rails.root.join("scripts_repo/#{project_repo_name}")
+
   		cmd = "cucumber #{path}"
+      
   		scenario_names.each do |s|
   			cmd += " -n "
   			cmd += "'#{s}'"
@@ -49,9 +53,9 @@ class ProjectsController < ApplicationController
   		cmd += " -d -f json" 
   		puts cmd
   		result = `#{cmd}`
-  		project = Project.find(params[:project_id])
+  		
       title = "Scenarios: " + scenario_names.join("; ")
-  		new_report = project.reports.create(:title => title, :content => result)
+  		new_report = @project.reports.create(:title => title, :content => result)
   		render :nothing => true
   	end
 

@@ -10,7 +10,8 @@
 	    	<input type="checkbox">
 	    </th>
 			<th>Report Title</th>
-			<th>Updated at</th>
+			<th>Created at</th>
+			<th></th>
 		</tr>
 	  <% @reports.each do |r| %>
 			<tr>
@@ -18,7 +19,8 @@
 	      	<input type="checkbox">
 	      </td>
 				<td><%= link_to r.title, project_report_path(@project, r) %></td>
-				<td><%= time_ago_in_words(r.updated_at) %></td>
+				<td><%= time_ago_in_words(r.created_at) %></td>
+				<td><%= link_to 'Delete', r, :method => :delete, data: { confirm: "Are you sure?" } %></td>
 			</tr>
 		<% end %>
 	</table>

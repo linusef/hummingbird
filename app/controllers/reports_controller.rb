@@ -23,6 +23,12 @@ class ReportsController < ApplicationController
   	end
   end
 
+  def destroy
+    @report = Report.find(params[:id])
+    @report.destroy
+    redirect_to project_reports_path(project_id: @report.project.id)
+  end
+
   def write_report
   	@report = Report.find 17
   	write_data(@report.content)

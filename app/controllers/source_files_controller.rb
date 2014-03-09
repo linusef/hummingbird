@@ -9,6 +9,7 @@ class SourceFilesController < ApplicationController
   	@project = Project.find(params[:project_id])
   	if @project.source_files.count == 0
       @project.create_source_files_tree
+      sleep 0.5
       @root = @project.source_files[0].root
     else
   	  @root = @project.source_files[0].root

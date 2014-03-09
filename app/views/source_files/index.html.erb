@@ -1,4 +1,7 @@
 <div id = "source_file_panel">
+	<%= link_to "Refresh", "#", {id: "start_test", class: "btn btn-primary pull-right"} %>
+</div>
+<div id="source_file_breadcrumb_panel">
 	<%= source_files_bread_crumb(@root) %>
 </div>
 <%= tree_table %>

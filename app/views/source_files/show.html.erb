@@ -1,4 +1,4 @@
-<div id = "source_file_panel">
+<div id = "source_file_breadcrumb_panel">
 	<%= source_files_bread_crumb(@root) %>
 </div>
 <%= tree_table %>
@@ -12,7 +12,8 @@
     editor.setTheme("ace/theme/monokai");
     editor.setShowPrintMargin(false);
 
-	var bread_crumb_text = $('#source_file_panel').text();
+	var bread_crumb_text = $('#source_file_breadcrumb_panel').text();
+	
 	var re = /(?:\.([^.]+))?$/;
 	var ext = re.exec(bread_crumb_text)[1];
 	//trim ext extra spaces

@@ -51,11 +51,8 @@ class ProjectsController < ApplicationController
 			cmd += "'#{s}'"
 		end
 		cmd += " -d -f json" 
-		puts cmd
-		result = `#{cmd}`
-		
-    title = "Scenarios: " + scenario_names.join("; ")
-		new_report = @project.reports.create(:title => title, :content => result)
+		title = "Scenarios: " + scenario_names.join("; ")
+		@project.delay.run_test(title, cmd)
 		render :nothing => true
 	end
 

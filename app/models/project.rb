@@ -3,6 +3,12 @@ class Project < ActiveRecord::Base
 	has_many :reports
 	has_many :source_files
 
+  def run_test(title, cmd)
+    puts cmd
+    result = `#{cmd}`
+    new_report = self.reports.create(:title => title, :content => result)
+  end
+
 	def create_source_files_tree
 		#delete existing source file tree nodes
     	self.source_files.delete_all

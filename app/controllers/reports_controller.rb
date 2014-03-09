@@ -29,8 +29,21 @@ class ReportsController < ApplicationController
     redirect_to project_reports_path(project_id: @report.project.id)
   end
 
+  def delete_selected_reports
+    report_ids = params[:report_ids]
+    @project = Report.find(report_ids.first).project
+    report_ids.each do |id|
+      r = Report.find(id)
+      r.destroy
+    end
+    respond_to do |format|
+        format.js   {}
+    end
+    #redirect_to project_reports_path(project_id: @project)
+  end
+
   def write_report
-  	@report = Report.find 17
+  	#@report = Report.find 17
   	write_data(@report.content)
   end
 

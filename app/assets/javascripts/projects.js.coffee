@@ -15,3 +15,24 @@ $ ->
 			  {scenario_names: scenario_names, project_id: project_id}
 			type: "post"
 		return
+
+	$("#report_list").on 'click', '#select_all_reports', ->
+	  checkboxes = $("#report_list").find(":checkbox:enabled")
+	  if @checked
+	    checkboxes.prop "checked", true
+	  else
+	    checkboxes.prop "checked", false
+	  return
+
+	$("#report_panel").on 'click', '#delete_selected_reports',->
+		report_ids = $("input.checkbox-row:checkbox:checked").map(-> 
+			$(this).prop('checked', this.checked).val()
+		).get()
+		console.log(report_ids)
+
+		$.ajax
+			url: "/reports/delete_selected_reports"
+			data:
+			  {report_ids: report_ids}
+			type: "post"
+		return

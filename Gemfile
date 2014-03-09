@@ -12,12 +12,13 @@ group :development, :test do
   gem 'guard-rspec', '2.5.0'
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
-  gem 'childprocess', '0.3.6'
-  gem 'cucumber'
+  gem 'childprocess', '0.5.1' #'0.3.6'
+  gem 'cucumber', '1.3.11'
+
 end
 
 group :test do
-  gem 'selenium-webdriver', '2.35.1'
+  gem 'selenium-webdriver', '2.40.0'
   gem 'capybara', '2.1.0'
 end
 

@@ -44,13 +44,13 @@ class ProjectsController < ApplicationController
     project_repo_name = @project.name.downcase.sub(' ','_')
     path = Rails.root.join("scripts_repo/#{project_repo_name}")
 
-		cmd = "cucumber #{path}"
+		cmd = "bundle exec cucumber #{path}"
     
 		scenario_names.each do |s|
 			cmd += " -n "
 			cmd += "'#{s}'"
 		end
-		cmd += " -d -f json" 
+		cmd += " -f json" 
 		title = "Scenarios: " + scenario_names.join("; ")
 		@project.delay.run_test(title, cmd)
 		render :nothing => true

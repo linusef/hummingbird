@@ -7,15 +7,23 @@ class SourceFilesController < ApplicationController
 
   def index
   	@project = Project.find(params[:project_id])
-  	@project.create_source_files_tree if @project.source_files.count == 0
-  	@root = @project.source_files[0].root
+  	if @project.source_files.count == 0
+      @project.create_source_files_tree
+    else
+  	  @root = @project.source_files[0].root
+    end
   end 
 
   def refresh_source_files
     @project = Project.find(params[:project_id])
     @project.source_files.delete_all
     @project.create_source_files_tree
-    @root = @project.source_files[0].root
+
+    if @project.source_files.count == 0
+      @project.create_source_files_tree
+    else
+      @root = @project.source_files[0].root
+    end
     redirect_to project_source_files_path(@project)
   end
 

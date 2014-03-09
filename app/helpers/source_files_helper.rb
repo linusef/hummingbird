@@ -1,5 +1,7 @@
 module SourceFilesHelper
 	def source_files_bread_crumb(node)
+      return if node.nil?
+
     	link = '<li>' + node.file_name + '</li>'
     	until node == node.root      
       		node = node.parent
@@ -10,6 +12,8 @@ module SourceFilesHelper
   	end 
 
   def tree_table
+    return "<p>Please upload your test scripts</p>".html_safe if @root.nil?
+
     if @root.node_type == 'file'
        %{#{render 'form'}}.html_safe
     else

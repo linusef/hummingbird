@@ -76,6 +76,11 @@ body {
   }
 }
 
+.jumbotron {
+  padding-top: 10px !important;
+  margin: 20px 150px;
+}
+
 /* footer */
 
 
@@ -98,16 +103,20 @@ body {
 /* projects index */
 
 #project_list {
+  margin-top: 30px;
+  padding: 0px;
   text-align: center;
   ul { 
+    margin: 0px;
+    padding: 0px;
     list-style:none; 
   }
 }
 
 .project_column { 
 
-  width: 250px;
-  height: 89px;
+  width: 220px;
+  height: 80px;
   float: left;
   margin: 5px 20px 25px 5px;
   border-bottom: 1px solid #BEDCE7;
@@ -120,6 +129,15 @@ body {
      -moz-box-shadow: 4px 5px 10px -4px #888;
           box-shadow: 4px 5px 15px -4px #888;
     cursor: move;
+
+  .name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .edit, .delete {
+    font-size: 12px;
+  }
 }
 
 .key-word {

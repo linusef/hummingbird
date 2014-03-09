@@ -8,8 +8,9 @@ class SourceFilesController < ApplicationController
   def index
   	@project = Project.find(params[:project_id])
   	if @project.source_files.count == 0
-      @project.create_source_files_tree
-      sleep 0.5
+      ActiveRecord::Base.transaction do
+        @project.create_source_files_tree
+      end
       @root = @project.source_files[0].root
     else
   	  @root = @project.source_files[0].root

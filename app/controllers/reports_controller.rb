@@ -14,6 +14,11 @@ class ReportsController < ApplicationController
   	@report = @project.reports.build
   end
 
+  def edit
+    @project = Project.find(params[:project_id])
+    @report = Report.find(params[:id])  
+  end
+
   def create
   	@report = Report.new(report_params)
   	if @report.save

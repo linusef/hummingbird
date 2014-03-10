@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   def index
   	@project = Project.find(params[:project_id])
-  	@reports = @project.reports
+  	@reports = @project.reports.order("created_at desc")
   end
 
   def show

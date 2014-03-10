@@ -19,7 +19,7 @@
 	      	<input class="checkbox-row" type="checkbox" value=<%="#{r.id}"%>>
 	      </td>
 				<td><%= link_to truncate(r.title,  length: 100, omission: '...'), project_report_path(@project, r) %></td>
-				<td><%= time_ago_in_words(r.created_at) %></td>
+				<td><%= time_ago_in_words(r.created_at) %> ago</td>
 				<td><%= link_to 'Delete', r, :method => :delete, data: { confirm: "Are you sure?" } %></td>
 			</tr>
 		<% end %>

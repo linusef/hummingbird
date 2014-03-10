@@ -19,4 +19,4 @@ Capybara.register_driver :selenium_with_long_timeout do |app|
   Capybara::Driver::Selenium.new(app, :browser => :firefox, :http_client => client)
 end
 
-Capybara.current_session.driver.browser.manage.window.resize_to(1280, 768)
+#Capybara.current_session.driver.browser.manage.window.resize_to(1280, 768)

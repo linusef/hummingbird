@@ -1,5 +1,5 @@
 @countries
-Feature:
+Feature: Reset country filters
   As a user I should be able to select multiple filters to be applied at once, and clicking "reset filter" should reset them.
   
   Scenario: reset filters

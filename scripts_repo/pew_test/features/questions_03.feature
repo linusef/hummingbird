@@ -1,5 +1,5 @@
 @questions
-Feature:
+Feature: User questions
   As a user 
   I should be able to click through any "people are asking" question and visit the page associated to it via admin
   

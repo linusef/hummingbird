@@ -1,5 +1,5 @@
 @signin
-Feature:
+Feature: User login - success
   As a registered user 
   I should be able to login with the correct email address and password
   

@@ -1,5 +1,5 @@
 @reader
-Feature:
+Feature: Submit a user query
   As a user 
   I should be able to submit a new user query which should then be available for admin to approve.
   

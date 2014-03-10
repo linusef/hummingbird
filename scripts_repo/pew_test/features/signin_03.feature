@@ -1,5 +1,5 @@
 @signin
-Feature:
+Feature: Non-registered user
   As a non-registered user 
   If I enter my email address on the login page 
   I should be told that the email address does not exist and I should register

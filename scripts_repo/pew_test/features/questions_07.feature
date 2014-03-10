@@ -1,5 +1,5 @@
 @questions
-Feature:
+Feature: Reader Queries
   As a user 
   I should be able to view and click through the admin selected "featured survey question"
   

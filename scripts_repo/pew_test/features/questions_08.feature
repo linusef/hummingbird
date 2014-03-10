@@ -1,5 +1,5 @@
 @questions
-Feature:
+Feature: Browse question detail
   As a user 
   I should be able to click on any question to be taken to the explorer chart associated with that question
   

@@ -1,5 +1,5 @@
 @countries
-Feature:
+Feature: Filter countries
   As a user when 
   I type to search for a country the list of countries should filter live based on available possible matches
   

@@ -1,5 +1,5 @@
 @signup
-Feature:
+Feature: User registration failure
   As a new user 
   I leave any piece of required information off of the registration form
   So I should not be able to register

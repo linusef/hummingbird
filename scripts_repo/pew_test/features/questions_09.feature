@@ -1,5 +1,5 @@
 @questions
-Feature:
+Feature: Reset question filter
   As a user 
   I should be able to reset the selected filters and skip through pages of the list of questions using the pagination navigation
   

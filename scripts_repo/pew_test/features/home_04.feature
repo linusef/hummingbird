@@ -1,5 +1,5 @@
 @home
-Feature: home 04
+Feature: home page search
   As a user 
   I should be able to search from the home page for terms like "violence"
   So that I can observe the correct results

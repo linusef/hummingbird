@@ -1,5 +1,5 @@
 @questions
-Feature:
+Feature: User submit questions from home page
   As a user 
   I should be able to submit my own question from the abbreviated form at the bottom of the questions page
   

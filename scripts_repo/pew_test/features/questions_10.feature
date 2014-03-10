@@ -1,5 +1,5 @@
 @questions
-Feature:
+Feature: Question search on Topic page
   As a user 
   I should be able to search for a term like "government" on Topics page
   

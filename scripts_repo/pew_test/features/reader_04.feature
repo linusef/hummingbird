@@ -1,5 +1,5 @@
 @reader
-Feature:
+Feature: Featured reader question
   As a user 
   I should be able to see the "featured reader question" which was set by the admin, even when it changes.
   

@@ -1,5 +1,5 @@
 @questions
-Feature:
+Feature: Filter questions by topic and subtopic
   As a user 
   I should be able to click on any topic or subtopic and be taken to the search page with the correct limiter applied
   

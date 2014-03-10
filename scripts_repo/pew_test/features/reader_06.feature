@@ -1,5 +1,5 @@
 @reader
-Feature:
+Feature: User query form validation
   As a user 
   I should not be able to submit a new user query if I leave the email or question blank.
   

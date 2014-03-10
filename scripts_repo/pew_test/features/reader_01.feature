@@ -1,5 +1,5 @@
 @reader
-Feature: 
+Feature:  Review questions from user
   As a user 
   I should be able to review questions submitted by other users and approved by the admin from this page.
   

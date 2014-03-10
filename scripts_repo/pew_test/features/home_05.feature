@@ -1,5 +1,5 @@
 @home
-Feature:
+Feature: User registration
   As a new user 
   I should be taken to the register page by clicking "register" at the top of the page
   

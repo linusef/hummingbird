@@ -1,5 +1,5 @@
 @signin
-Feature:
+Feature: User login - failure
   As a registered user 
   I login with the correct email address and an incorrect password
   Then I should not be able to login

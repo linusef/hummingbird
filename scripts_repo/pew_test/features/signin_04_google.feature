@@ -1,5 +1,5 @@
 @signin
-Feature:
+Feature: Login with Google account
   As a registered user 
   I should be able to log in with my google account
   

@@ -1,5 +1,5 @@
 @countries
-Feature:
+Feature: Browse country page
   As a user when 
   I click a country name I should be taken to the home page for that country.
   

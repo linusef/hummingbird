@@ -1,5 +1,5 @@
 @questions
-Feature:
+Feature: filter questions by topic
   As a user 
   I should be able to filter the question list by clicking on any sub-topic (or changing the selected topic)
   

@@ -1,9 +1,9 @@
 @countries
-Feature:
+Feature: Filter Countries
   As a user 
   I should be able to filter down the displayed countries for exploring using the filters for regions.
   
-  Scenario: 
+  Scenario: filter down the displayed countries for exploring using the filters for regions
     Given I visit "Countries" page
     And I click "Asia-Pacific" filter
     Then I should see "60" countries

@@ -1,5 +1,5 @@
 @reader
-Feature:
+Feature: SEarch within reader questions
   As a user 
   I should be able to search for terms like "popular" and see results limited to only user submitted questions.
   

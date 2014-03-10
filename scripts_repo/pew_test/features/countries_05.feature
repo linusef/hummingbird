@@ -1,5 +1,5 @@
 @countries
-Feature:
+Feature: Country news
   As a user 
   The news that I view at the bottom of the country "overview" tab should be the most recent news fetched from our RSS news source for that country.
   

@@ -1,5 +1,5 @@
 @countries
-Feature:
+Feature: Compare countries
   As a user 
   I should be able to select "compare bermuda" and be taken to the compare screen with bermuda already selected and a second country ready to be selected for comparison.
   

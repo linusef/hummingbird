@@ -1,5 +1,5 @@
 @home
-Feature:
+Feature: home page carousel
   As a user 
   I should be able to click through all the sections of the carousel on the home page
   So that I can click through them to visit the URL specified in admin

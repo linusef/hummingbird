@@ -1,5 +1,5 @@
 @home
-Feature: 
+Feature: featured counties
   As a user 
   I should be able to click through any featured country, religion, or topic/question listed on the home page
   

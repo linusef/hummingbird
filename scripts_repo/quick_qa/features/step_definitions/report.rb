@@ -1,3 +1,7 @@
+Given(/^I visit "(.*?)" page$/) do |arg1|
+  page_to "Home"
+end
+
 Given(/^I have an outdated test report$/) do
   pending # express the regexp above with the code you wish you had
 end

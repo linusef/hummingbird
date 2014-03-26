@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+	http_basic_authenticate_with :name => "quickqa", :password => "calvert"
+
 	def index
 		@projects = Project.all
 	end

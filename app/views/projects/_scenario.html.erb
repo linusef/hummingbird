@@ -6,6 +6,11 @@
       <a data-toggle="collapse" data-parent="#accordion" href="#<%= scenario["id"].sub(';','-') %>">
         <span class="key-word">Scenario: </span><%= scenario["name"] %>
       </a>
+      <% if scenario.has_key?("tags") %>
+        <% scenario["tags"].map do |t| %>
+          <span class="tag label alert-warning"><%= t["name"] %></span>
+        <% end %>
+      <% end %>
     </h6>
   </div>
   <div id="<%= scenario["id"].sub(';','-') %>" class="panel-collapse collapse in">

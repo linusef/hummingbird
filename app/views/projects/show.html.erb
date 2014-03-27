@@ -3,8 +3,13 @@
 <div class="row">
 	<div id="project_tags_panel">
 		<% if @tags.any? %>
+    <span class="tag label alert-info">Feature:</span>
 		<%= render partial: "tag", collection: @tags %>
 		<% end %>
+    <% if @scenario_tags.any? %>
+    <span class="tag label alert-info">Scenario:</span>
+    <%= render partial: "tag", collection: @scenario_tags %>
+    <% end %>
 	</div>
 </div>
 

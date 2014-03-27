@@ -21,17 +21,38 @@ module ApplicationHelper
 				features_with_tag << f
 			end
 		end
+		features.each do |f|
+			f["elements"].each do |fe|
+				if fe.has_key?("tags") and (fe["tags"].to_s =~ /"#{tag}"/)
+					features_with_tag << f
+				end
+			end
+		end
+
 		features_with_tag.uniq
 	end
 
 	def parse_tags(features)
-		features.map do |f|
+		# when the tag is added to the feature
+		tags = features.map do |f|
 			if f.has_key?("tags") 
 				f["tags"].map do |t|
 					t["name"]
 				end
 			end
-		end.flatten.uniq.sort
+		end
+		# when the tag is associated with a scenario rather than the feature
+		scenario_tags = []
+		features.each do |f|
+			f["elements"].each do |fe|
+				if fe.has_key?("tags") 
+					fe["tags"].map do |t|
+						scenario_tags << t["name"]
+					end
+				end
+			end
+		end
+		[tags.flatten.uniq.sort , scenario_tags.flatten.uniq.sort]
 	end
 
 	def nav_link(link_text, link_path)

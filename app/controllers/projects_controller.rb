@@ -11,7 +11,9 @@ class ProjectsController < ApplicationController
 	def show
 		@project = Project.find(params[:id])
 		@features = parse_features
-		@tags = parse_tags(@features)
+		all_tags = parse_tags(@features)
+		@tags = all_tags[0]
+		@scenario_tags = all_tags[1]
 	end
 
 	def new
@@ -47,8 +49,11 @@ class ProjectsController < ApplicationController
 	def filter_by_tag
 		@project = Project.find(params[:id])
 		all_features = parse_features
-		@tags = parse_tags(all_features)
+		all_tags = parse_tags(all_features)
+		@tags = all_tags[0]
+		@scenario_tags = all_tags[1]
 		@features = parse_features_by_tag(params[:tag])
+
 		render 'show'
 	end
 

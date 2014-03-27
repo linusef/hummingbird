@@ -2,7 +2,9 @@
 <%= render 'project_nav_tabs' %>
 <div class="row">
 	<div id="project_tags_panel">
+		<% if @tags.any? %>
 		<%= render partial: "tag", collection: @tags %>
+		<% end %>
 	</div>
 </div>
 

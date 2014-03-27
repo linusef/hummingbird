@@ -146,8 +146,19 @@ body {
   }
 }
 
+/* projects show */
+
 .key-word {
   color: navy;
   font-weight: bold;
 }
 
+#project_tags_panel {
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  .tag {
+    margin: 0 3px;
+  }
+}

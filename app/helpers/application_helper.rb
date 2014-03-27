@@ -4,13 +4,34 @@ module ApplicationHelper
 		formatter = Gherkin::Formatter::JSONFormatter.new(io)
 		parser = Gherkin::Parser::Parser.new(formatter)
 
-		sources = get_project_feature_files
+		sources = get_project_feature_files # defined in projects_helper.rb
 		sources.each do |file_path|
 		  parser.parse(IO.read(file_path), file_path, 0)
 		end
 
 		formatter.done
 		MultiJson.load(io.string)
+	end
+
+	def parse_features_by_tag(tag)
+		features = parse_features
+		features_with_tag = []
+		features.each do |f|
+			if f["tags"].to_s =~ /"#{tag}"/
+				features_with_tag << f
+			end
+		end
+		features_with_tag.uniq
+	end
+
+	def parse_tags(features)
+		features.map do |f|
+			if f.has_key?("tags") 
+				f["tags"].map do |t|
+					t["name"]
+				end
+			end
+		end.flatten.uniq.sort
 	end
 
 	def nav_link(link_text, link_path)

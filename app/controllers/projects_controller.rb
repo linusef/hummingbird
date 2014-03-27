@@ -1,12 +1,17 @@
 class ProjectsController < ApplicationController
 	http_basic_authenticate_with :name => "quickqa", :password => "calvert"
 
+	include ApplicationHelper
+	include ProjectsHelper
+
 	def index
 		@projects = Project.all
 	end
 
 	def show
 		@project = Project.find(params[:id])
+		@features = parse_features
+		@tags = parse_tags(@features)
 	end
 
 	def new
@@ -37,6 +42,14 @@ class ProjectsController < ApplicationController
 		@project = Project.find(params[:id])
   	@project.destroy
   	redirect_to projects_path
+	end
+
+	def filter_by_tag
+		@project = Project.find(params[:id])
+		all_features = parse_features
+		@tags = parse_tags(all_features)
+		@features = parse_features_by_tag(params[:tag])
+		render 'show'
 	end
 
 	def start_test

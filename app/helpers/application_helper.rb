@@ -53,7 +53,6 @@ module ApplicationHelper
 				end
 			end
 		end
-		pp tags
 		[tags.flatten.uniq.sort, scenario_tags.flatten.uniq.sort]
 	end
 

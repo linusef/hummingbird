@@ -1,3 +1,5 @@
 @email
 Feature: note closure confirmation
-	Scenario: The user should receive an confirmation on note closure
+	@pending
+	Scenario: I should receive an confirmation on note closure
+	When .... how to close a note?

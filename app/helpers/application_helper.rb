@@ -34,10 +34,11 @@ module ApplicationHelper
 
 	def parse_tags(features)
 		# when the tag is added to the feature
-		tags = features.map do |f|
+		tags = []
+		features.each do |f|
 			if f.has_key?("tags") 
-				f["tags"].map do |t|
-					t["name"]
+				f["tags"].each do |t|
+					tags << t["name"]
 				end
 			end
 		end
@@ -52,7 +53,8 @@ module ApplicationHelper
 				end
 			end
 		end
-		[tags.flatten.uniq.sort , scenario_tags.flatten.uniq.sort]
+		pp tags
+		[tags.flatten.uniq.sort, scenario_tags.flatten.uniq.sort]
 	end
 
 	def nav_link(link_text, link_path)

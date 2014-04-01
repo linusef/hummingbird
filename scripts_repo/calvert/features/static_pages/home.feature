@@ -1,4 +1,4 @@
-@static_page
+@static_pages
 Feature: Home page
 	Scenario: Intro text
 		Given I visit "Home" page

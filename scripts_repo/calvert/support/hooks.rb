@@ -4,7 +4,6 @@ Before do |scenario|
   # The +scenario+ argument is optional, but if you use it, you can get the title,
   # description, or name (title + description) of the scenario that is about to be
   # executed.
-  Rails.logger.debug "Starting scenario: #{scenario.title}"
 end
 
 # After hooks will be run after the last step of each scenario, 
@@ -16,8 +15,8 @@ After do |scenario|
   # if you use it, you can inspect status with
   # the #failed?, #passed? and #exception methods.
 
-  if(scenario.failed?)
-    subject = "[Calvert] #{scenario.exception.message}"
-    send_failure_email(subject)
-  end
+  # if(scenario.failed?)
+  #   subject = "[Calvert] #{scenario.exception.message}"
+  #   send_failure_email(subject)
+  # end
 end 

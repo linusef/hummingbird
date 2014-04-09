@@ -26,7 +26,14 @@ module ReportsHelper
 						data << '<tr class="active"><td>' << '<span class="key-word">Feature: </span>'
 					elsif o[k] == "Scenario"
 						data << '<tr class="alert-info"><td>' << '<span class="key-word">Scenario: </span>'
+					elsif o[k] == "Scenario Outline"
+						data << '<tr class="alert-info"><td>' << '<span class="key-word">Scenario Outline: </span>'
 					elsif o[k] == "Given " || o[k] == "And " || o[k] == "Then " || "When "
+						# Steps for Scenario Outline donot have "result"
+						if o["result"].nil?
+							break
+						end
+						
 						if o["result"]["status"] == "undefined"
 							data << '<tr class="warning"><td>'
 						elsif o["result"]["status"] == "passed"
@@ -47,6 +54,7 @@ module ReportsHelper
 					end
 				when "result","steps", "status", "match","duration", "location" ,"line", "id", "uri", "elements", "path", "description", "type", "comments", "value"
 				when "arguments", "offset", "val"
+				when "cells", "rows", "examples"
 				when "error_message"
 						data << '<tr class="danger"><td>' << o[k] << "</td></tr>"
 				else

@@ -22,9 +22,11 @@ module ApplicationHelper
 			end
 		end
 		features.each do |f|
-			f["elements"].each do |fe|
-				if fe.has_key?("tags") and (fe["tags"].to_s =~ /"#{tag}"/)
-					features_with_tag << f
+			if f.has_key?("elements")
+				f["elements"].each do |fe|
+					if fe.has_key?("tags") and (fe["tags"].to_s =~ /"#{tag}"/)
+						features_with_tag << f
+					end
 				end
 			end
 		end
@@ -45,10 +47,12 @@ module ApplicationHelper
 		# when the tag is associated with a scenario rather than the feature
 		scenario_tags = []
 		features.each do |f|
-			f["elements"].each do |fe|
-				if fe.has_key?("tags") 
-					fe["tags"].map do |t|
-						scenario_tags << t["name"]
+			if f.has_key?("elements")
+				f["elements"].each do |fe|
+					if fe.has_key?("tags") 
+						fe["tags"].map do |t|
+							scenario_tags << t["name"]
+						end
 					end
 				end
 			end

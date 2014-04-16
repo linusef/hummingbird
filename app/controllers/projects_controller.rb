@@ -59,9 +59,9 @@ class ProjectsController < ApplicationController
 	def start_test_old
     	@project = Project.find(params[:project_id])
 		scenario_names = params[:scenario_names]
-    # path = Rails.root.to_s + "/scripts_repo/sample_project"
-    project_repo_name = @project.name.downcase.sub(' ','_')
-    path = Rails.root.join("scripts_repo/#{project_repo_name}")
+    	# path = Rails.root.to_s + "/scripts_repo/sample_project"
+    	project_repo_name = @project.name.downcase.gsub(' ','_')
+    	path = Rails.root.join("scripts_repo/#{project_repo_name}")
 
 		cmd = "bundle exec cucumber #{path}"
     
@@ -79,7 +79,7 @@ class ProjectsController < ApplicationController
 		@project = Project.find(params[:project_id])
 		scenario_names = params[:scenario_names]
 
-		project_repo_name = @project.name.downcase.sub(' ','_')
+		project_repo_name = @project.name.downcase.gsub(' ','_')
 		path = Rails.root.join("scripts_repo/#{project_repo_name}")
 		cmd = "cucumber scripts_repo/iOS/"
 
@@ -91,18 +91,28 @@ class ProjectsController < ApplicationController
 	def start_test
 		@project = Project.find(params[:project_id])
 		scenario_names = params[:scenario_names]
+		tag_option = "-t @common"
+		scenario_option = ""
+		scenario_names.each do |s|
+			scenario_option += " --name "
+			scenario_option+= "'#{s}'"
+		end
 
-		project_repo_name = @project.name.sub(' ','_')
+		project_repo_name = @project.name.gsub(' ','_')
 		path = Rails.root.join("scripts_repo/#{project_repo_name}")
-		ENV['PROJECT_DIR'] = Rails.root.join("scripts_repo/ios").to_s
-	    puts ENV['PROJECT_DIR']
+
+
+		ENV['PROJECT_DIR'] = Rails.root.join("scripts_repo/#{project_repo_name}/").to_s
 	    ENV['DEVICE_TARGET'] = 'iPad - Simulator - iOS 7.0'
 	    #result = `cucumber scripts_repo/iOS/ -f json`
 	    #result = `cucumber scripts_repo/iOS/ -f html`
-	    cmd = "cucumber scripts_repo/#{project_repo_name}/ -f html"
-	    puts cmd
 	    #result = %x["#{cmd}"]
-	    result = `cucumber scripts_repo/"#{project_repo_name}"/ -f html`
+
+	    # path_option must be the last option, otherwise when you use `` to execute command, you will get weird errors
+	    path_option = "scripts_repo/#{project_repo_name}/"
+	    cmd = "cucumber #{tag_option} #{path_option}"
+	  	puts cmd 
+	    result = `cucumber "#{tag_option}" -f html "#{path_option}"`
 	    title = "Scenarios: " + scenario_names.join("; ")
 	    new_report = @project.reports.create!(:title => title, :content => result)
 	    render :nothing => true

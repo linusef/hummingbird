@@ -23,7 +23,7 @@ class Project < ActiveRecord::Base
 		#delete existing source file tree nodes
     	self.source_files.delete_all
     	#root = self.setting.path
-      project_repo_name = self.name.downcase.sub(' ', '_')
+      project_repo_name = self.name.downcase.gsub(' ', '_')
       source_root_folder = Rails.root.to_s + "/scripts_repo/#{project_repo_name}/features"
     	traverse_source_files_dir(source_root_folder, nil)
 	end

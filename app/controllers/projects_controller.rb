@@ -93,13 +93,17 @@ class ProjectsController < ApplicationController
 		@project = Project.find(params[:project_id])
 		scenario_names = params[:scenario_names]
 
-		project_repo_name = @project.name.downcase.sub(' ','_')
+		project_repo_name = @project.name.sub(' ','_')
 		path = Rails.root.join("scripts_repo/#{project_repo_name}")
 		ENV['PROJECT_DIR'] = Rails.root.join("scripts_repo/ios").to_s
 	    puts ENV['PROJECT_DIR']
 	    ENV['DEVICE_TARGET'] = 'iPad - Simulator - iOS 7.0'
 	    #result = `cucumber scripts_repo/iOS/ -f json`
-	    result = `cucumber scripts_repo/iOS/ -f html`
+	    #result = `cucumber scripts_repo/iOS/ -f html`
+	    cmd = "cucumber scripts_repo/#{project_repo_name}/ -f html"
+	    puts cmd
+	    #result = %x["#{cmd}"]
+	    result = `cucumber scripts_repo/"#{project_repo_name}"/ -f html`
 	    title = "Scenarios: " + scenario_names.join("; ")
 	    new_report = @project.reports.create!(:title => title, :content => result)
 	    render :nothing => true

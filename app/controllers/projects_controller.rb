@@ -94,7 +94,7 @@ class ProjectsController < ApplicationController
 		tag_option = "-t @common"
 		scenario_option = ""
 		scenario_names.each do |s|
-			scenario_option += " --name "
+			scenario_option += " -n "
 			scenario_option+= "'#{s}'"
 		end
 
@@ -110,9 +110,10 @@ class ProjectsController < ApplicationController
 
 	    # path_option must be the last option, otherwise when you use `` to execute command, you will get weird errors
 	    path_option = "scripts_repo/#{project_repo_name}/"
-	    cmd = "cucumber #{tag_option} -f html #{path_option}"
+	    cmd = "cucumber #{scenario_option} -f html #{path_option}"
 	  	puts cmd 
-	    result = `cucumber "#{tag_option}" -f html "#{path_option}"`
+	    result = `#{cmd}`
+	    #result = `cucumber "#{tag_option}" -f html "#{path_option}"`
 	    title = "Scenarios: " + scenario_names.join("; ")
 	    new_report = @project.reports.create!(:title => title, :content => result)
 	    render :nothing => true

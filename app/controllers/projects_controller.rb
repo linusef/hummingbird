@@ -110,7 +110,7 @@ class ProjectsController < ApplicationController
 
 	    # path_option must be the last option, otherwise when you use `` to execute command, you will get weird errors
 	    path_option = "scripts_repo/#{project_repo_name}/"
-	    cmd = "cucumber #{tag_option} #{path_option}"
+	    cmd = "cucumber #{tag_option} -f html #{path_option}"
 	  	puts cmd 
 	    result = `cucumber "#{tag_option}" -f html "#{path_option}"`
 	    title = "Scenarios: " + scenario_names.join("; ")

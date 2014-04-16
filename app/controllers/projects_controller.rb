@@ -57,8 +57,8 @@ class ProjectsController < ApplicationController
 		render 'show'
 	end
 
-	def start_test
-    @project = Project.find(params[:project_id])
+	def start_test_old
+    	@project = Project.find(params[:project_id])
 		scenario_names = params[:scenario_names]
     # path = Rails.root.to_s + "/scripts_repo/sample_project"
     project_repo_name = @project.name.downcase.sub(' ','_')
@@ -74,6 +74,35 @@ class ProjectsController < ApplicationController
 		title = "Scenarios: " + scenario_names.join("; ")
 		@project.delay.run_test(title, cmd)
 		render :nothing => true
+	end
+
+	def start_test_for_delayed_job
+		@project = Project.find(params[:project_id])
+		scenario_names = params[:scenario_names]
+
+		project_repo_name = @project.name.downcase.sub(' ','_')
+		path = Rails.root.join("scripts_repo/#{project_repo_name}")
+		cmd = "cucumber scripts_repo/iOS/"
+
+		title = "Scenarios: " + scenario_names.join("; ")
+		@project.delay.run_test(title, cmd)
+		render :nothing => true
+	end
+
+	def start_test
+		@project = Project.find(params[:project_id])
+		scenario_names = params[:scenario_names]
+
+		project_repo_name = @project.name.downcase.sub(' ','_')
+		path = Rails.root.join("scripts_repo/#{project_repo_name}")
+		ENV['PROJECT_DIR'] = Rails.root.join("scripts_repo/ios").to_s
+	    puts ENV['PROJECT_DIR']
+	    ENV['DEVICE_TARGET'] = 'iPad - Simulator - iOS 7.0'
+	    #result = `cucumber scripts_repo/iOS/ -f json`
+	    result = `cucumber scripts_repo/iOS/ -f html`
+	    title = "Scenarios: " + scenario_names.join("; ")
+	    new_report = @project.reports.create!(:title => title, :content => result)
+	    render :nothing => true
 	end
 
 	private

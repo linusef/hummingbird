@@ -158,6 +158,11 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 
+  span {
+    word-wrap: normal;
+    display: inline-block;
+  }
+  
   span.tag {
     margin-right: 5px;
     padding: 3px 3px;

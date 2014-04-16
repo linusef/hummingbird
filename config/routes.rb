@@ -8,6 +8,7 @@ Hummingbird::Application.routes.draw do
   get "reports/write_report"
   post "reports/delete_selected_reports" => "reports#delete_selected_reports"
   get "source_files/refresh_source_files" => "source_files#refresh_source_files", as: :refresh_source_files
+  get '/reports/:id/show_report' => "reports#show_report"
 
   resources :projects do 
     resources :reports

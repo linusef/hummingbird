@@ -5,6 +5,7 @@ gem 'rails', '4.0.3'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'gherkin'
+gem 'calabash-cucumber', '0.9.168'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -14,11 +15,9 @@ group :development, :test do
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.5.1' #'0.3.6'
   gem 'cucumber', '1.3.11'
-
 end
 
 group :test do
-  gem 'selenium-webdriver', '2.40.0'
   gem 'capybara', '2.1.0'
 end
 

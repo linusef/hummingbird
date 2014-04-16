@@ -9,6 +9,12 @@ class ReportsController < ApplicationController
   	@report = Report.find(params[:id]) 
   end
 
+  def show_report
+    @report = Report.find(params[:id]) 
+    @project = @report.project
+    render :text => @report.content.html_safe, :layout => false
+  end
+  
   def new
   	@project = Project.find(params[:project_id])
   	@report = @project.reports.build

@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-	http_basic_authenticate_with :name => "quickqa", :password => "calvert"
 
 	include ApplicationHelper
 	include ProjectsHelper

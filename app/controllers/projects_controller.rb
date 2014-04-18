@@ -102,15 +102,18 @@ class ProjectsController < ApplicationController
 		path = Rails.root.join("scripts_repo/#{project_repo_name}")
 
 
-		ENV['PROJECT_DIR'] = Rails.root.join("scripts_repo/#{project_repo_name}/").to_s
-	    ENV['DEVICE_TARGET'] = 'iPad - Simulator - iOS 7.0'
+		#ENV['PROJECT_DIR'] = Rails.root.join("scripts_repo/#{project_repo_name}/").to_s
+	    
+		device_target="DEVICE_TARGET='iPad Retina - Simulator - iOS 7.0'"
 
 	    path_option = "scripts_repo/#{project_repo_name}/"
-	    cmd = "cd scripts_repo/#{project_repo_name} && cucumber #{scenario_option} -d -f html -p common > ../../tmp/test.html"
-	    
-	    title = "Scenarios: " + scenario_names.join("; ")
+	    #cmd = "cd scripts_repo/#{project_repo_name} && #{device_target} cucumber #{scenario_option} -f html -p regression > ../../tmp/test.html"
+	    #cmd = "cd scripts_repo/#{project_repo_name} && #{device_target} cucumber PLATFORM=ios PRODUCT=englishtown --tags @englishtown --tags ~@~englishtown --tags ~@~common --tags ~@android_only -f html -p regression > ../../tmp/test.html"
+	    cmd = "cd scripts_repo/#{project_repo_name} && #{device_target} cucumber PLATFORM=ios PRODUCT=englishtown --tags @ios --tags @englishtown,@common --tags ~@~englishtown --tags ~@~common --tags ~@android_only -f html -p regression > ../../tmp/test.html"
+	    title = "run_tests.sh englishtown latest"
+	    #title = "Scenarios: " + scenario_names.join("; ")
 	    @project.delay.run_test(title, cmd)
-	    
+
 	    render :nothing => true
 	end
 

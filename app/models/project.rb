@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
 
   def run_test_old(title, cmd)
     puts cmd
+    #ENV['DEVICE_TARGET'] = 'iPad - Simulator - iOS 7.0'
     result = `#{cmd}`
     new_report = self.reports.create(:title => title, :content => result)
   end

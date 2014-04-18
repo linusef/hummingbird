@@ -104,24 +104,19 @@ class ProjectsController < ApplicationController
 
 		ENV['PROJECT_DIR'] = Rails.root.join("scripts_repo/#{project_repo_name}/").to_s
 	    ENV['DEVICE_TARGET'] = 'iPad - Simulator - iOS 7.0'
-	    #result = `cucumber scripts_repo/iOS/ -f json`
-	    #result = `cucumber scripts_repo/iOS/ -f html`
-	    #result = %x["#{cmd}"]
 
-	    # path_option must be the last option, otherwise when you use `` to execute command, you will get weird errors
 	    path_option = "scripts_repo/#{project_repo_name}/"
-	    cmd = "cucumber #{scenario_option} -f html #{path_option}"
-	  	puts cmd 
-	    result = `#{cmd}`
-	    #result = `cucumber "#{tag_option}" -f html "#{path_option}"`
+	    cmd = "cd scripts_repo/#{project_repo_name} && cucumber #{scenario_option} -d -f html -p common > ../../tmp/test.html"
+	    
 	    title = "Scenarios: " + scenario_names.join("; ")
-	    new_report = @project.reports.create!(:title => title, :content => result)
+	    @project.delay.run_test(title, cmd)
+	    
 	    render :nothing => true
 	end
 
 	private
 
 	def project_params
-    params.require(:project).permit(:name)
-  end
+    	params.require(:project).permit(:name)
+  	end
 end

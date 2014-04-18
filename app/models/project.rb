@@ -9,14 +9,15 @@ class Project < ActiveRecord::Base
     new_report = self.reports.create(:title => title, :content => result)
   end
 
-  def run_test_0(title, cmd) 
-    #puts cmd
-    ENV['PROJECT_DIR'] = File.expend('scripts_repo/ios')
-    puts ENV['PROJECT_DIR']
-    ENV['DEVICE_TARGET'] = 'iPad - Simulator - iOS 7.0'
-    #result = `cucumber scripts_repo/iOS/ -f json`
-    result = `cucumber scripts_repo/iOS/ -f html`
-    new_report = self.reports.create!(:title => title, :content => result)
+  def run_test(title, cmd) 
+    puts cmd
+    system(cmd)
+    result = ""
+    path = Rails.root.join("tmp/test.html")
+    File.open( path, 'r' ) do |out|
+        result = out.read.to_s.strip
+    end
+    self.reports.create(:title => title, :content => result)
   end
 
 	def create_source_files_tree

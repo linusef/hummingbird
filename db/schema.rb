@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309122820) do
+ActiveRecord::Schema.define(version: 20140418042149) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -27,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140309122820) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140309122820) do
   end
 
   create_table "reports", force: true do |t|
-    t.string   "title"
+    t.text     "title"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -55,6 +58,6 @@ ActiveRecord::Schema.define(version: 20140309122820) do
     t.string   "node_type"
   end
 
-  add_index "source_files", ["ancestry"], name: "index_source_files_on_ancestry"
+  add_index "source_files", ["ancestry"], name: "index_source_files_on_ancestry", using: :btree
 
 end

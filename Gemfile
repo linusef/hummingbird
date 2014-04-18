@@ -6,9 +6,11 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'gherkin'
 gem 'calabash-cucumber', '0.9.168'
+gem 'calabash-android'
+gem 'pg'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.8'
+  #gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
   gem 'spork-rails', '4.0.0'
@@ -63,6 +65,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :production do
-  gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end

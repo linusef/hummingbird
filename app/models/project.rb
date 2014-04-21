@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
 	validates :name, presence: true
 	has_many :reports
+  has_many :settings
 	has_many :source_files
 
   def run_test_old(title, cmd)
@@ -26,7 +27,11 @@ class Project < ActiveRecord::Base
     	self.source_files.delete_all
     	#root = self.setting.path
       project_repo_name = self.name.downcase.gsub(' ', '_')
+      # by default QuickQA will load features in  scripts_repo/project_name
       source_root_folder = Rails.root.to_s + "/scripts_repo/#{project_repo_name}/features"
+      # project root path setting will overwrite default path
+      setting = self.settings.first
+      source_root_folder  = (self.settings.first.project_root_path.to_s + "/features") unless setting.nil?  
     	traverse_source_files_dir(source_root_folder, nil)
 	end
 

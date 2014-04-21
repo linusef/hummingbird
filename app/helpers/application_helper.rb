@@ -68,6 +68,8 @@ module ApplicationHelper
   			class_name = (controller_name == "reports" ? 'active' : '')
   		when "Source Files"
   			class_name = (controller_name == "source_files" ? 'active' : '')
+  		when "Settings"
+  			class_name = (controller_name == "settings" ? 'active' : '')
   		else
   			class_name = ''
   		end

@@ -13,6 +13,7 @@ Hummingbird::Application.routes.draw do
   resources :projects do 
     resources :reports
     resources :source_files
+    resources :settings
   end
   get '/projects/:id/:tag' => "projects#filter_by_tag", as: :filter_by_tag
 

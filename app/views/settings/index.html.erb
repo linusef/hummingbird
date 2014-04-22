@@ -1,9 +1,12 @@
+<div id="report_panel">
+<%= link_to "Create Setting", new_project_setting_path(@project), class: "btn btn-primary pull-right" %>
+</div>
 <div id="report_list">
 	<table class="table table-striped">
 		<tr>
 			<th>
-	    		<input id="select_all_reports" type="checkbox">
-	    	</th>
+	    		Enabled?
+	    </th>
 			<th>Name</th>
 			<th>Project Root Path</th>
 			<th></th>
@@ -11,11 +14,12 @@
 	  <% @settings.each do |s| %>
 			<tr>
 				<td>
-	      			<input class="checkbox-row" type="checkbox" value=<%= s.enabled %>>
-	      		</td>
-				<td><%= link_to s.name, project_settings_path(@project, s) %></td>
+    			<%= s.enabled %>
+    		</td>
+				<td><%= s.name %></td>
 				<td><%= s.project_root_path %> </td>
-				<td><%= link_to 'Delete', "#" %></td>
+				<td><%= link_to 'Edit', edit_setting_path(s) %> | 
+					<%= link_to 'Delete', s, :method => :delete, data: { confirm: "Are you sure?" } %></td>
 			</tr>
 		<% end %>
 	</table>

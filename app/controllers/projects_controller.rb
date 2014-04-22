@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
 	def start_test
 		@project = Project.find(params[:project_id])
 		scenario_names = params[:scenario_names]
-		tag_option = "-t @core"
+		tag_option = "-t @core -t ~@android"
 		scenario_option = ""
 		scenario_names.each do |s|
 			scenario_option += " -n "

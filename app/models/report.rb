@@ -3,4 +3,12 @@ class Report < ActiveRecord::Base
 	validates :content, presence: true
 	validates :project_id, presence: true
 	belongs_to :project
+
+	def dump_report
+    tmp_path = Rails.root.join("tmp/test.json")
+    system("rm -f #{tmp_path}")
+    File.open(tmp_path, 'w+' ) do |out|
+      out << self.content
+    end
+  end
 end

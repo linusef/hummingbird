@@ -115,11 +115,11 @@ class ProjectsController < ApplicationController
 	    #title = "run_tests.sh englishtown latest"
 	    #cmd = "cd #{project_root_path} && #{device_target} cucumber #{scenario_option} -f html -p common > ../../tmp/test.html"
 	    #cmd = "cd #{project_root_path} && #{device_target} cucumber PLATFORM=ios PRODUCT=englishtown #{tag_option} -f html -p all > #{tmp_report_path}"
-	    cmd = "cd #{project_root_path} && #{device_target} cucumber PLATFORM=ios PRODUCT=englishtown #{tag_option} -d -f json -o #{json_report_path} -p all"
+	    cmd = "cd #{project_root_path} && #{device_target} cucumber PLATFORM=ios PRODUCT=englishtown #{scenario_option} -d -f json -o #{json_report_path} -p all"
 	    #title = "cucumber #{tag_option} -p common"
 
-	    title = "englishtown -t @core"
-	    #title = "Scenarios: " + scenario_names.join("; ")
+	    #title = "englishtown -t @core"
+	    title = "Scenarios: " + scenario_names.join("; ")
 	    @project.delay.run_test(title, cmd)
 
 	    render :nothing => true

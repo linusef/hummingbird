@@ -7,13 +7,18 @@ class ReportsController < ApplicationController
   def show
   	@project = Project.find(params[:project_id])
   	@report = Report.find(params[:id]) 
+    report_path = Rails.root.join("public/cucumber_reports/cucumber-html-reports")
+    system("rm -rf #{report_path}")
+    @report.dump_report
+    sleep 0.2 while !File.exist?(report_path)
+    sleep 0.5
   end
 
-  def show_report
-    @report = Report.find(params[:id]) 
-    @project = @report.project
-    render :text => @report.content.html_safe, :layout => false
-  end
+  # def show_report
+  #   @report = Report.find(params[:id]) 
+  #   @project = @report.project
+  #   render :text => @report.content.html_safe, :layout => false
+  # end
   
   def new
   	@project = Project.find(params[:project_id])

@@ -13,7 +13,6 @@ class ProjectsController < ApplicationController
 		all_tags = parse_tags(@features)
 		@tags = all_tags[0]
 		@scenario_tags = all_tags[1]
-		pp @features
 	end
 
 	def new

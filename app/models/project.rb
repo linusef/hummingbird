@@ -14,12 +14,12 @@ class Project < ActiveRecord::Base
   def run_test(title, cmd) 
     puts cmd
     system(cmd)
-    result = ""
-    path = Rails.root.join("tmp/test.html")
-    File.open( path, 'r' ) do |out|
-        result = out.read.to_s.strip
-    end
-    self.reports.create(:title => title, :content => result)
+    # result = ""
+    # path = Rails.root.join("tmp/test.html")
+    # File.open( path, 'r' ) do |out|
+    #     result = out.read.to_s.strip
+    # end
+    # self.reports.create(:title => title, :content => result)
   end
 
 	def create_source_files_tree

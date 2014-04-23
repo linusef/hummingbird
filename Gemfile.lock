@@ -36,7 +36,7 @@ GEM
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
     builder (3.1.4)
-    calabash-android (0.4.21)
+    calabash-android (0.4.18)
       awesome_print
       cucumber
       escape (~> 0.0.4)
@@ -271,7 +271,7 @@ DEPENDENCIES
   ancestry
   bcrypt-ruby (= 3.1.2)
   bootstrap-sass (~> 3.1.1)
-  calabash-android
+  calabash-android (= 0.4.18)
   calabash-cucumber (= 0.9.168)
   capybara (= 2.1.0)
   childprocess (= 0.5.1)

@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
 	def start_test
 		@project = Project.find(params[:project_id])
 		scenario_names = params[:scenario_names]
-		tag_option = "-t @core -t ~@android"
+		tag_option = "-t @core "
 		scenario_option = ""
 		scenario_names.each do |s|
 			scenario_option += " -n "
@@ -102,19 +102,23 @@ class ProjectsController < ApplicationController
 		path = Rails.root.join("scripts_repo/#{project_repo_name}")
 		project_root_path = @project.settings.first.project_root_path
 
-		#ENV['PROJECT_DIR'] = Rails.root.join("scripts_repo/#{project_repo_name}/").to_s
+		project_root_path = !project_root_path.empty? ? project_root_path : path
 	    
 		device_target="DEVICE_TARGET='iPad Retina - Simulator - iOS 7.0'"
 
 	    path_option = "scripts_repo/#{project_repo_name}/"
-	    tmp_report_path = Rails.root.join('tmp/test.html')
+	    #report_path = Rails.root.join('public/cucumber_reports')
+	    json_report_path = Rails.root.join('tmp/test.json')
 	    #cmd = "cd scripts_repo/#{project_repo_name} && #{device_target} cucumber #{scenario_option} -f html -p regression > ../../tmp/test.html"
 	    #cmd = "cd scripts_repo/#{project_repo_name} && #{device_target} cucumber PLATFORM=ios PRODUCT=englishtown --tags @englishtown --tags ~@~englishtown --tags ~@~common --tags ~@android_only -f html -p regression > ../../tmp/test.html"
 	    #cmd = "cd scripts_repo/#{project_repo_name} && #{device_target} cucumber PLATFORM=ios PRODUCT=englishtown --tags @ios --tags @englishtown,@common --tags ~@~englishtown --tags ~@~common --tags ~@android_only -f html -p regression > ../../tmp/test.html"
 	    #title = "run_tests.sh englishtown latest"
 	    #cmd = "cd #{project_root_path} && #{device_target} cucumber #{scenario_option} -f html -p common > ../../tmp/test.html"
-	    cmd = "cd #{project_root_path} && #{device_target} cucumber PLATFORM=ios PRODUCT=englishtown #{tag_option} -f html -p common > #{tmp_report_path}"
-	    title = "cucumber #{tag_option} -p common"
+	    #cmd = "cd #{project_root_path} && #{device_target} cucumber PLATFORM=ios PRODUCT=englishtown #{tag_option} -f html -p all > #{tmp_report_path}"
+	    cmd = "cd #{project_root_path} && #{device_target} cucumber PLATFORM=ios PRODUCT=englishtown #{tag_option} -d -f json -o #{json_report_path} -p all"
+	    #title = "cucumber #{tag_option} -p common"
+
+	    title = "englishtown -t @core"
 	    #title = "Scenarios: " + scenario_names.join("; ")
 	    @project.delay.run_test(title, cmd)
 

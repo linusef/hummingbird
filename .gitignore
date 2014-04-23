@@ -22,3 +22,4 @@ __init__.py
 
 # Ignore scripts_repo for now
 #/scripts_repo
+public/cucumber_reports/*

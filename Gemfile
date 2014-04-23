@@ -6,7 +6,7 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'gherkin'
 gem 'calabash-cucumber', '0.9.168'
-gem 'calabash-android'
+gem 'calabash-android', '0.4.18'
 gem 'pg'
 
 group :development, :test do

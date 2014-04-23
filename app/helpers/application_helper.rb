@@ -30,8 +30,28 @@ module ApplicationHelper
 				end
 			end
 		end
-
 		features_with_tag.uniq
+	end
+
+	def parse_scenarios_by_tag(tag)
+		features = parse_features
+		scenarios_with_tag = []
+		features.each do |f|
+			if f.has_key?("elements")
+				if f["tags"].to_s =~ /"#{tag}"/
+					scenarios_with_tag << f["elements"]
+				else
+					f["elements"].each do |s|
+						if s.has_key?("tags")
+							if s["tags"].to_s =~ /"#{tag}"/
+								scenarios_with_tag << s
+							end
+						end
+					end
+				end
+			end
+		end
+		scenarios_with_tag.flatten.uniq
 	end
 
 	def parse_tags(features)

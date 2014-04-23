@@ -1,3 +1,4 @@
+@nav
 Feature: On project page there should be 4 tabs
 	Scenario: Navigate through tabs on a project page
 		Given I visit "Home" page

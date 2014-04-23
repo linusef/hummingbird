@@ -1,3 +1,4 @@
+@report
 Feature: Delete reports
 	In order to remove outdated reports
 	As a tester
@@ -9,4 +10,7 @@ Feature: Delete reports
 		And I open Reports page
 		Then I should be able to delete the report
 		And I should see the success message
+	@delete
+	Scenario: Delete test 2
+		Given This is delete test 2
 

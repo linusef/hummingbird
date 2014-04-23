@@ -29,6 +29,10 @@
 
 #start {
   padding-top: 20px;
+  #start_test_by_tag {
+    float: right;
+    margin-left: 10px;
+  }
 }
 /* breadcrumb */
 
@@ -161,6 +165,12 @@ body {
   span {
     word-wrap: normal;
     display: inline-block;
+  }
+
+  span.btn-xs a {
+    color: white;
+    font-weight: bold;
+    padding: 0 5px;
   }
   
   span.tag {

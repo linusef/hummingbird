@@ -16,6 +16,17 @@ $ ->
 			type: "post"
 		return
 
+	$("#start").on 'click', '#start_test_by_tag',->
+		selected_tag = $("#selected_tag").val()
+		project_id = $("#project_id").val()
+
+		$.ajax
+			url: "/projects/start_test_by_tag"
+			data:
+			  {selected_tag: selected_tag, project_id: project_id}
+			type: "post"
+		return
+
 	$("#report_list").on 'click', '#select_all_reports', ->
 	  checkboxes = $("#report_list").find(":checkbox:enabled")
 	  if @checked
